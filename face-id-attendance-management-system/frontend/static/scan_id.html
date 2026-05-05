@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📷 ID Card Scanner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    video, canvas {
+      border: 2px solid #007bff;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-light text-center py-4">
+  <h2 class="mb-3">🪪 Scan ID Card to Mark Attendance</h2>
+  <p>Hold your ID card steady in front of the camera</p>
+
+  <video id="camera" autoplay playsinline width="480" height="360"></video>
+  <br>
+  <button id="captureBtn" class="btn btn-primary mt-3">📸 Capture & Mark Attendance</button>
+  <p id="status" class="mt-4"></p>
+
+  <canvas id="snapshot" width="480" height="360" class="d-none"></canvas>
+
+  <script>
+    const video = document.getElementById("camera");
+    const canvas = document.getElementById("snapshot");
+    const ctx = canvas.getContext("2d");
+    const status = document.getElementById("status");
+
+    // ✅ Start camera
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        alert("Camera access denied or unavailable!");
+      }
+    }
+
+    startCamera();
+
+    // 📸 Capture frame and send to backend
+    document.getElementById("captureBtn").addEventListener("click", async () => {
+      status.innerText = "⏳ Scanning ID card...";
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const base64Image = canvas.toDataURL("image/jpeg");
+
+      const formData = new FormData();
+      formData.append("id_image_b64", base64Image);
+
+      try {
+        const res = await fetch("http://127.0.0.1:8000/attendance/mark_by_id", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          status.innerText = "✅ " + data.message;
+          status.classList.add("text-success");
+        } else {
+          status.innerText = "❌ " + (data.detail || "Error marking attendance");
+          status.classList.add("text-danger");
+        }
+      } catch (err) {
+        status.innerText = "⚠️ Could not connect to backend. Check server.";
+      }
+    });
+  </script>
+</body>
+</html>
