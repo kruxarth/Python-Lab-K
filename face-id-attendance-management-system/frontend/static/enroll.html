@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enroll User | Face + ID Attendance System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2b6cb0;
+      --accent: #e9f0fa;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      padding: 45px 40px;
+      max-width: 480px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-label {
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .form-control, .form-select {
+      border-radius: 12px;
+      border: 1px solid #d0d7e2;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      background-color: #fff;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.15rem rgba(43, 108, 176, 0.2);
+    }
+
+    .btn-enroll {
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      width: 100%;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-enroll:hover {
+      background-color: #255fa3;
+      box-shadow: 0 8px 20px rgba(43, 108, 176, 0.25);
+      transform: translateY(-2px);
+    }
+
+    #result {
+      margin-top: 18px;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2> <center>Enroll User</center></h2>
+    <p class="subtitle">Register a new student or staff for Face + ID Attendance.</p>
+
+    <form id="enrollForm">
+      <div class="mb-3">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input type="text" id="full_name" class="form-control" placeholder="Enter Your full name" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="roll_no" class="form-label">Roll Number</label>
+        <input type="text" id="roll_no" class="form-control" placeholder="Enter Roll Number"
+               pattern="[A-Za-z0-9]+" title="Only letters and numbers allowed" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="branch" class="form-label">Branch</label>
+        <select id="branch" class="form-select" required>
+          <option value="" disabled selected>-- Select Branch --</option>
+          <option>Computer Engineering</option>
+          <option>Information Technology</option>
+          <option>Electronics and Telecommunication</option>
+          <option>Electrical Engineering</option>
+          <option>Mechanical Engineering</option>
+          <option>Civil Engineering</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Upload Face Image</label>
+        <input type="file" id="faceImage" class="form-control" accept="image/*" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Upload ID Card Image</label>
+        <input type="file" id="idImage" class="form-control" accept="image/*" required>
+      </div>
+
+      <button type="submit" class="btn btn-enroll">Enroll User</button>
+    </form>
+
+    <div id="result"></div>
+    <center><a href="index.html" class="back-link">← Back to Home</a></center>
+  </div>
+
+  <script>
+    const form = document.getElementById("enrollForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const full_name = document.getElementById("full_name").value.trim();
+      const roll_no = document.getElementById("roll_no").value.trim();
+      const branch = document.getElementById("branch").value;
+      const faceFile = document.getElementById("faceImage").files[0];
+      const idFile = document.getElementById("idImage").files[0];
+      const result = document.getElementById("result");
+
+      if (!faceFile || !idFile) {
+        alert("Please upload both Face and ID images.");
+        return;
+      }
+
+      const toBase64 = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(",")[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      const face_image_b64 = await toBase64(faceFile);
+      const id_image_b64 = await toBase64(idFile);
+
+      const formData = new FormData();
+      formData.append("full_name", full_name);
+      formData.append("roll_no", roll_no);
+      formData.append("branch", branch);
+      formData.append("face_image_b64", face_image_b64);
+      formData.append("id_image_b64", id_image_b64);
+
+      result.textContent = "⏳ Enrolling user...";
+
+      try {
+        const res = await fetch("http://127.0.0.1:8000/users/enroll", {
+          method: "POST",
+          body: formData
+        });
+        const data = await res.json();
+        if (res.ok) {
+          result.innerHTML = `✅ Enrollment successful! <br><strong>${full_name}</strong> (${roll_no})`;
+        } else {
+          result.textContent = `❌ ${data.detail || "Something went wrong"}`;
+        }
+      } catch (err) {
+        result.textContent = "⚠️ Server not reachable. Please check backend.";
+      }
+    });
+  </script>
+</body>
+</html>
