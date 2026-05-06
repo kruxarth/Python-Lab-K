@@ -1,0 +1,15 @@
+nums = [3, 1, 4, 1, 5, 9, 2]
+
+print("len:", len(nums))
+print("max:", max(nums))
+print("min:", min(nums))
+print("sum:", sum(nums))
+print("sorted:", sorted(nums))
+print("abs:", abs(-42))
+print("round:", round(3.14159, 2))
+print("type:", type(nums))
+print("range:", list(range(1, 6)))
+print("enumerate:", list(enumerate(nums)))
+print("zip:", list(zip([1,2,3], ['a','b','c'])))
+print("map:", list(map(lambda x: x**2, nums)))
+print("filter:", list(filter(lambda x: x > 3, nums)))

@@ -1,0 +1,33 @@
+name = "Harshada Patil"
+print("Student: Harshada")
+print("Upper:", name.upper())
+print("Lower:", name.lower())
+print("Length:", len(name))
+print("Replace:", name.replace("Patil", "Desai"))
+print("Slice:", name[0:8])
+print("Find 'Patil':", name.find("Patil"))
+fruits = ["Mango", "Banana", "Guava"]
+print("Student: Amit")
+fruits.append("Papaya")
+print("After append:", fruits)
+fruits.remove("Banana")
+print("After remove:", fruits)
+fruits.sort()
+print("Sorted:", fruits)
+print("Length:", len(fruits))
+student = ("Manasi", 21, "Nagpur", "BSc")
+print("Student: Manasi")
+print("Name:", student[0])
+print("Age:", student[1])
+print("City:", student[2])
+print("Course:", student[3])
+marks1 = {85, 90, 78, 85, 90, 92}
+marks2 = {90, 92, 88, 76}
+print("Student: Ravi")
+print("Set marks1:", marks1)
+print("Union:", marks1 | marks2)
+print("Intersection:", marks1 & marks2)
+print("Difference:", marks1 - marks2)
+cities = ["Pune", "Mumbai", "Nagpur", "Pune", "Mumbai"]
+unique_cities = set(cities)
+print("Student: Prachi | Unique Cities:", unique_cities)

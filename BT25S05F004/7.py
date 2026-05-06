@@ -1,0 +1,11 @@
+numbers = [10, 20, 30, 40, 50]
+print("List =", numbers)
+print("Length of list =", len(numbers))
+print("Maximum number =", max(numbers))
+print("Minimum number =", min(numbers))
+print("Sum of list =", sum(numbers))
+x = -25
+print("Absolute value =", abs(x))
+y = 12.5678
+print("Rounded value =", round(y, 2))
+print("Data type of numbers =", type(numbers))

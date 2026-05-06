@@ -1,0 +1,3 @@
+Hello, this is a sample text file.
+My name is Divya.
+This line is appended to the file.

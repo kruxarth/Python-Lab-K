@@ -1,0 +1,3 @@
+Python laboratory work in progress.
+Project: File operations implementation.
+Submission date: April 10, 2026.

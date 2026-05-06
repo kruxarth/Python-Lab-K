@@ -1,0 +1,35 @@
+a = 10
+b = 5
+
+print("Value of a =", a)
+print("Value of b =", b)
+print("\nArithmetic Operators")
+print("Addition =", a + b)
+print("Subtraction =", a - b)
+print("Multiplication =", a * b)
+print("Division =", a / b)
+print("Modulus =", a % b)
+print("Exponent =", a ** b)
+print("Floor Division =", a // b)
+print("\nRelational Operators")
+print("a > b =", a > b)
+print("a < b =", a < b)
+print("a == b =", a == b)
+print("a != b =", a != b)
+print("\nLogical Operators")
+print("(a > 5 and b < 10) =", a > 5 and b < 10)
+print("(a > 5 or b > 10) =", a > 5 or b > 10)
+print("not(a > b) =", not(a > b))
+print("\nAssignment Operators")
+c = a
+print("c =", c)
+c += b
+print("c += b =", c)
+c -= b
+print("c -= b =", c)
+print("\nBitwise Operators")
+print("a & b =", a & b)
+print("a | b =", a | b)
+print("a ^ b =", a ^ b)
+print("a << 1 =", a << 1)
+print("a >> 1 =", a >> 1)

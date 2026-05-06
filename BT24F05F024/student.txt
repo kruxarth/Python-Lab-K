@@ -1,0 +1,4 @@
+Name: SSJ
+Age: 19
+Department: CSE
+Grade: A

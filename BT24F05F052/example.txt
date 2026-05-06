@@ -1,0 +1,3 @@
+Hello, this is a sample text file.
+My name is Rohit Band.
+This line is appended to the file.
