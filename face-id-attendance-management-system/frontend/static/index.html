@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Face + ID Attendance System</title>
+<style>
+  /* ===== FIXES: improved base styling, spacing, typography, and responsiveness ===== */
+  /* Kept all original selectors + properties, only enhanced/added missing foundational styles */
+  /* No existing class or ID names changed, only added new safe resets and adjustments */
+
+  /* Reset / base fixes for consistent rendering */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #eef2f7;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* added small padding for mobile safety - does not break layout */
+    padding: 16px;
+  }
+
+  .hero-card {
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 14px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    transition: all 0.25s ease;
+    /* FIX: ensure max-width and proper sizing on very small screens */
+    max-width: 100%;
+  }
+
+  .hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #111827;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 25px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Divider line for modern feel */
+  .subtitle::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #2563eb;
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+
+  .btn-custom {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    position: relative;
+    /* Fix: ensure cursor pointer and consistent text alignment */
+    cursor: pointer;
+    text-align: left;
+    padding-left: 18px;
+    /* subtle improvement: box-sizing already accounted */
+  }
+
+  /* subtle arrow */
+  .btn-custom::after {
+    content: "›";
+    position: absolute;
+    right: 15px;
+    opacity: 0.6;
+    transition: 0.2s;
+    /* Fix: ensure arrow is vertically centered, smoother */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .btn-custom:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.2);
+  }
+
+  .btn-custom:hover::after {
+    right: 10px;
+    opacity: 1;
+  }
+
+  /* Additional small fix: first button margin-top consistency */
+  .btn-custom:first-of-type {
+    margin-top: 0;
+  }
+
+  /* FIX: improve tap highlight on mobile, no design change */
+  .btn-custom:active {
+    transform: translateY(1px);
+    transition: 0.05s;
+  }
+
+  /* Fix for very narrow screens: ensure text does not overflow, arrows stay visible */
+  @media (max-width: 400px) {
+    .hero-card {
+      padding: 28px 20px;
+    }
+    .btn-custom {
+      font-size: 13px;
+      padding-left: 14px;
+      padding-right: 28px;
+    }
+    .btn-custom::after {
+      right: 12px;
+      font-size: 18px;
+    }
+  }
+
+  /* Accessibility / focus outline - subtle but improves UX, doesn't alter visual design */
+  .btn-custom:focus-visible {
+    outline: 2px solid #1d4ed8;
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  /* no layout or color changes, just restores any potential alignment issues 
+     original margins and spacing preserved exactly */
+  .hero-card .btn-custom {
+    margin-top: 12px;
+  }
+  /* keep original ordering and spacing identical, first btn no extra top margin */
+  .hero-card .btn-custom:first-of-type {
+    margin-top: 0;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="hero-card">
+
+    <h1>Face + ID Attendance</h1>
+    <p class="subtitle">Secure • Fast • Reliable</p>
+
+    
+
+    <a href="enroll.html" class="btn-custom">Enroll User</a>
+    <a href="attendance.html" class="btn-custom">Face Recognition</a>
+    <a href="id_attendance.html" class="btn-custom">ID Card Scan</a>
+    <a href="admin_login.html" class="btn-custom">Admin Dashboard</a>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+
+    :root {
+      --primary: #2563eb;
+      --bg: #f9fbff;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f9fbff 0%, #edf2f7 100%);
+      color: var(--text-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: none;
+      border-radius: 22px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    video {
+      border-radius: 16px;
+      border: 2px solid #dbeafe;
+      width: 100%;
+      max-width: 480px;
+      background: #f0f4ff;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.1);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      border: none;
+      border-radius: 12px;
+      padding: 0.8rem;
+      width: 100%;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+      transform: translateY(-2px);
+    }
+
+    #result {
+      font-weight: 500;
+      color: var(--primary);
+      margin-top: 1.2rem;
+      font-size: 1rem;
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a.back-link:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+  
